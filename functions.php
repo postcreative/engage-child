@@ -43,6 +43,51 @@
 
 
 
+// remove personal options block
+
+if(is_admin()){
+  remove_action( 'admin_color_scheme_picker', 'admin_color_scheme_picker' );
+  add_action( 'personal_options', 'prefix_hide_personal_options' );
+}
+function prefix_hide_personal_options() {
+?>
+<script type="text/javascript">
+  jQuery(document).ready(function( $ ){
+    $("#your-profile .form-table:first, #your-profile h3:first, .form-table:last, h3:last").remove();
+    $("#nickname,#display_name").parent().parent().remove();
+  });
+</script>
+<?php
+}
+
+
+
+//Remove tags metabox from Posts
+
+
+function engage_remove_tags_metabox() {
+	remove_meta_box( 'tagsdiv-post_tag' , 'post' , 'normal' ); 
+}
+add_action( 'admin_menu' , 'engage_remove_tags_metabox' );
+
+
+
+// remove aim, jabber and yim
+add_filter( 'user_contactmethods', 'update_contact_methods',10,1);
+
+function update_contact_methods( $contactmethods ) {
+
+unset($contactmethods['aim']);  
+unset($contactmethods['jabber']);  
+unset($contactmethods['yim']);  
+
+
+return $contactmethods;
+}
+
+
+
+
 /*   ====================================================================================================================
 	
 	IMAGES
