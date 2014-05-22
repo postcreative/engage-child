@@ -10,7 +10,7 @@
 	UTILITIES
 	 
 =========================================================================================================================
-*/
+
 
 	
 // dequeue responsive css
@@ -21,7 +21,7 @@
 		
 		// Now register your styles and scripts here
 	}
-	add_action( 'wp_enqueue_scripts', 'engage_remove_scripts', 20 );
+	add_action( 'wp_enqueue_scripts', 'engage_remove_scripts', 20 );*/
 
 
 
@@ -43,22 +43,7 @@
 
 
 
-// remove personal options block
 
-if(is_admin()){
-  remove_action( 'admin_color_scheme_picker', 'admin_color_scheme_picker' );
-  add_action( 'personal_options', 'prefix_hide_personal_options' );
-}
-function prefix_hide_personal_options() {
-?>
-<script type="text/javascript">
-  jQuery(document).ready(function( $ ){
-    $("#your-profile .form-table:first, #your-profile h3:first, .form-table:last, h3:last").remove();
-    $("#nickname,#display_name").parent().parent().remove();
-  });
-</script>
-<?php
-}
 
 
 
@@ -96,7 +81,7 @@ return $contactmethods;
 */
 
 
-	//below fixed spans with 10px padding left and right
+	//Revise these for individual project image sizes
 	
    add_image_size( 'small-thumb', 200, 132, true );
 	add_image_size( 'medium-thumb', 280, 180, true );
@@ -106,14 +91,6 @@ return $contactmethods;
 	add_image_size( 'half-main', 440, 276, true ); 	
 
 
-/* 	Fixed span with no padding
-
-	add_image_size( 'small-thumb', 220, 132, true );
-	add_image_size( 'medium-thumb', 300, 180, true );
-	add_image_size( 'small-main', 620, 340, true );
-	add_image_size( 'medium-main', 700, 420, true );
-	add_image_size( 'full-main', 940, 420, true );
-	add_image_size( 'half-main', 460, 276, true );	*/
 
 
 
